@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual AI Health Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <h1><b></b>Virtual AI Health Assistant</h1>
+        <p>Helping parents with common health concerns for their children</p>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Enter your child's symptoms</h2>
+            <p>Describe the health issue your child is facing, and our AI assistant will provide a solution.</p>
+            <textarea id="symptom-input" rows="5" placeholder="E.g., My child has a fever"></textarea>
+            <button onclick="getHealthAdvice()">Get Advice</button>
+            <div class="response" id="response">
+                <h3>AI Assistant's Advice:</h3>
+                <p id="advice-text"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        © 2025 Virtual AI Health Assistant. All rights reserved.
+    </footer>
+
+    <script>
+        function getHealthAdvice() {
+            const input = document.getElementById('symptom-input').value.toLowerCase();
+            const responseDiv = document.getElementById('response');
+            const adviceText = document.getElementById('advice-text');
+
+            if (!input) {
+                adviceText.textContent = "Please enter your child's symptoms to get advice.";
+                responseDiv.style.display = "block";
+                return;
+            }
+
+            let advice;
+
+            // Check for symptoms and provide advice
+            if (input.includes("fever")) {
+                advice = "For fever, give your child paracetamol in the appropriate dose,Ensure they stay hydrated and monitor their temperature,dress them lightly.Call doctor if your child is younger thean 3 months,if your child's has temperature is 105d/F,don't give your child aspirin,don't sponge your child down ,don't cover your child with too many blanket's.";
+            } else if (input.includes("stomach pain")) {
+                advice = "For stomach pain, provide plenty of fluids and consider a 'happy tummy' remedy and also try homemade mixture of water,salt and sugar. Avoid heavy foods until they feel better.";
+            } else if (input.includes("ear infection")) {
+                advice = "For ear infections, consult a doctor for antibiotics. Pain relievers and prescribed eardrops may help relieve discomfort.";
+            } else if (input.includes("pink eye") || input.includes("conjunctivitis")) {
+                advice = "For pink eye, use prescribed antibiotics, eye drops, or ointments. Maintain good hygiene to prevent spreading.";
+            } else if (input.includes("diarrhoea") || input.includes("diarrhea")) {
+                advice = "For diarrhea, keep your child hydrated with Pedialyte or ORS (oral rehydration solution).";
+            } else if (input.includes("bladder infection")) {
+                advice = "For bladder infections, consult a doctor for antibiotics such as amoxicillin, clavulanate, or cefixime.";
+            } else if (input.includes("chickenpox")) {
+                advice = "For chickenpox, treat with acetaminophen for fever, calamine lotion for itching, and antiviral drugs if prescribed.";
+            } else if (input.includes("skin infection")) {
+                advice = "For skin infections, use creams like Canesten or Sebamed rash cream. Consult a doctor if the condition worsens.";
+            } else if (input.includes("vomit") || input.includes ("vomitting")) {
+                advice = "make them hydrated , avoid solid foods , eat bland food once they stop vomitting ,make them rest";
+            } else if (input.includes("not talking")) {
+                advice = "talk with your child constantly using simple language,read books with them ,sing songs with them ,play interactive games,use gestures and facial expressions.";
+            } else if (input.includes("cough")) {
+                advice = "give anti-inflammatory medication like ibuprofen(advil,Children's Advil/Motrin,or naproxen(Aleve) or for home you can give 1/2 teaspoon honey as needed."; 
+            } else if (input.includes("cold")) {
+                advice = "Making sure baby drinks enough fluids,suctioning nasal mucus and keeping the sir moist or use saline drops make them rest keep the nose clean.;"
+            } else if (input.includes ("not walking")) {
+                advice = "provide ample play space , play with enticing toys, practice them standing,hold their hand make them walk with support ,praise and celebrate their attempts to stand and take steps ,even if they are small";           
+            } else if (input.includes("Gas")){
+                advice = "burp your baby , bicyle legs or give them colicaid syrup or GASTICA etc.";
+            } else if (input.includes("headpain") || input.includes ("headache")) {
+                advice = "Provide rest in aquite darkroom, cool compress on forehead ,hydration with water ,over the counter pain medication(acetaminophen or ibuprofen";
+            } else if (input.includes("not well")) {
+                advice = "Okay!Can you please explain in detail what happend to your child ? ";
+            } else if (input.includes("Neck pain")) {
+                advice = "make rest and ice compress to affected area for 20 min ,once the initial pain subsides encourage your child to do gentle neck stretchesand rotations to improve flexibility or give them pain relif medication like acetaminophen or ibuprofen as appropriate for your child,s age . ";
+            } else if (input.includes("weak")) {
+                advice = "provide your child healthy meals instead of medicine,make your child stress free , depending on their condition , light activities like walking or swimming can be beneficial.";
+            } else if (input.includes("diet") || input.includes("meal") || input.includes("nutrition")) {
+                advice = "A balanced diet,nutrition or meal for child is with a variety of foods from all food groups , including fruits, vegetables , whole grains, protein sources,  and dairy,while limiting in sugar drinks,prosessed food and excessive saturated fats.";          
+            } else if (input.includes("crying")) {              
+                advice = "If your baby is crying continuously, you can try these techniques to soothe the Swaddling: Wrap your baby in a blanket in a burrito-style. This can help them relax,or feed your baby ,or play with your baby ,If your child is crying continuously, the first step is to try to identify the reason behind their tears by checking if they are hungry, tired, uncomfortable (dirty diaper), in pain, or feeling unwell; then try to address the underlying cause with basic needs like feeding, changing diaper, or providing comfort; if the crying persists despite addressing potential needs, contact your pediatrician as it could indicate a medical issue or a deeper emotional concern requiring further evaluation. Key things to consider when a child is crying continuously:Basic needs:Hunger: Offer a meal or snack. Tiredness: Check their sleep schedule and consider a nap or bedtime routine. Wet or dirty diaper: Change their diaper. Physical discomfort: Check for any irritants like tight clothes or itchy tags. Emotional needs:Attention seeking: Give them a hug or positive interaction. Frustration: Try to identify the source of their frustration and offer support. Separation anxiety: Stay close and provide reassurance. Potential medical concerns:Pain: Check for signs of injury or illness like fever, earache, or stomach pain. Illness: If accompanied by other symptoms like lethargy, vomiting, or diarrhea, consult a doctor.Developmental issues: Some developmental milestones can cause discomfort and crying. What to do when your child is crying continuously:Stay calm and reassuring: Use a soft voice and maintain eye contact. Try soothing techniques: Rocking, singing, cuddling, or offering a favorite toy. Observe their behavior: Pay attention to their body language and cries to understand their needs. Seek professional advice:Contact your pediatrician: If crying is excessive, unexplained, or accompanied by other worrying symptoms. Consult a child development specialist: If you suspect emotional or behavioral concerns. Do not:Ignore the crying: Addressing your child's needs is crucial for their emotional well-being. Yell or become frustrated: This can escalate the situation and make your child feel more anxious. Shake your child: Shaking a baby can cause serious brain damage.";
+            } else {
+                advice = "It could be a sign of serious condition , Please visit to your nearest doctor immediately ! ";
+            }
+                adviceText.textContent = advice;
+            responseDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
